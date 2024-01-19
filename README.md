@@ -1,2 +1,2 @@
 # Signupform
-This is ample responsive Sign-Up form
+This is a simmple responsive Sign-Up form
