@@ -1,2 +1,2 @@
 # Signupform
-This is a simmple responsive Sign-Up form
+This is a simple responsive Sign-Up form using HTML5 , CSS3 and Javascript .
