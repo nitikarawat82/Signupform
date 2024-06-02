@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+
+    <title>Registration Page</title>
+  </head>
+  <body>
+    <div class="radial"></div>
+   <main>
+    <div class="row registration-box">
+      <div class="col-md-6 image-box">
+        <div class="text-box">
+          <h2>Sample Heading</h2>
+          <ul id="line">
+            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</li>
+            <li>
+              Explicabo soluta eligendi asperiores ipsum aperiam suscipit sequi
+              eius.
+            </li>
+            <li>
+              laborum harum tenetur quibusdam eum repudiandae nemo voluptatibus.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6 form-box">
+        <h2>Create an account</h2>
+        <!-- <p>Please fill out the form below to register.</p> -->
+        <form class="registration-form">
+          <div class="form-control">
+            <label class="bold-level" for="email">Enter your email</label>
+            <input
+              class="emailInput"
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
+            <div class="error-message" id="emailError"></div>
+          </div>
+
+          <div class="form-control">
+            <label for="dateOfBirth" class="bold-level"
+              >Date of birth (optional)</label
+            >
+            <div class="date_of_birth">
+              <div class="select_date">
+                <label class="small_lable" for="Date">Date</label>
+                <input class="dateInput" id="date" type="text" value="03" />
+              </div>
+
+              <div class="select_month">
+                <label class="small_lable" for="Date">Month</label>
+                <select class="monthInput" name="month" required>
+                  <option value="11">September</option>
+                </select>
+              </div>
+
+              <div class="select_year">
+                <label class="small_lable" for="Date">Year</label>
+                <select class="yearInput" name="year" required>
+                  <!-- <option value="" disabled selected>Year</option> -->
+                  <option value="1998">1998</option>
+                </select>
+              </div>
+            </div>
+            <div class="error-message" id="dateError"></div>
+          </div>
+
+          <div class="form-control">
+            <label for="password" class="bold-level"
+              >Choose a strong password</label
+            >
+            <input
+              class="passwordInput"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
+            <div id="password-error" class="error-message"></div>
+          </div>
+
+          <div class="form-control">
+            <div class="radio-group">
+              <label class="bold-level">Are you agency or individual?</label>
+              <div class="radio_input">
+                <input
+                  type="radio"
+                  id="individual"
+                  name="type"
+                  value="individual"
+                />
+                  <label for="individual">Individual</label>  
+                <input type="radio" id="agency" name="type" value="agency" />
+                 
+                <label for="agency">Agency</label>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit">Submit</button>
+        </form>
+        <div class="radial_form"></div>
+      </div>
+    </div>
+   </main>
+  </body>
+
+  <script>
+    // validation for email
+    document.getElementById("email").addEventListener("keyup", function () {
+      var emailInput = this.value.trim();
+      var emailError = document.getElementById("emailError");
+
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (emailRegex.test(emailInput) || emailInput === "") {
+        emailError.textContent = ""; // Clear error message if email is valid or empty
+      } else {
+        emailError.textContent = "Please add valid email address";
+      }
+    });
+
+    // validation for date input
+    document.getElementById("date").addEventListener("keyup", function () {
+      var dateInput = this.value.trim();
+      var dateError = document.getElementById("dateError");
+
+      // Check if the input is a number between 1 and 31
+      if (
+        /^0?[1-9]$|^0?[1-2][0-9]$|^0?3[0-1]$/.test(dateInput) ||
+        dateInput === ""
+      ) {
+        dateError.textContent = ""; // Clear error message if valid or empty
+      } else {
+        dateError.textContent = "Please enter valid date";
+      }
+    });
+
+
+    var passwordInput = document.getElementById('password');
+    var errorMessage = document.getElementById('password-error');
+
+    passwordInput.addEventListener('keyup', function() {
+      validatePassword();
+    });
+
+    function validatePassword() {
+      var password = passwordInput.value;
+
+      // Regular expression to check if the password contains at least one numeric value
+      var numericRegex = /\d/;
+
+      if (numericRegex.test(password)) {
+        errorMessage.textContent = ''; // Clear the error message if the password is valid
+      } else {
+        errorMessage.textContent = 'Password must have a numeric value.';
+      }
+    }
+  </script>
+</html>
